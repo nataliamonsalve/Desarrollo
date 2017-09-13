@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Calculadora de Natalia</title>
+<style>
+
+  .boton_personalizado{
+    text-decoration: none;
+    width:40px;
+    padding: 6px;
+    margin: 3px ;
+    font-weight: 600;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #892AED;
+    border-radius: 6px;
+    border: 1px solid #6827AD;
+  }
+
+  .boton_personalizado:hover{
+    color: #892AED;
+    background-color: #ffffff;
+  }
+
+.forma{
+  align: center;
+border: 4px #6827AD double;
+width: 300px;
+text-align: center;
+font-family: verdana
+font-size: 14;
+background-color: #C58EFF;
+}
+ #textoPantalla { width: 240px; border: 3px #6827AD solid; text-align: right; 
+                 position: relative; left: 6px;  padding: 5px 7px;
+                 background-color: white;  font-family: "courier new"; color: #6E24BD;
+                 overflow: hidden;}
+
+.forma [type=button] { width: 35px; padding: 0;  }
+/*botones especiales*/ 
+ </style>
+ </head>
+ <!--<body style="background-color: pink;">-->
+ <body>
+ <div>
+ <div class="forma" align="center">
+ <td><input type="text" id="textoPantalla"></td>
+
+<!--<p>
+<button class="boton_personalizado" value="C" onclick="clear()">C</button> 
+</p>-->
+
+  <p>
+ <!--<input type="button" class="boton_personalizado" value="9" onclick="textoPantalla.value+='9'"></input> -->
+ <button class="boton_personalizado" value="9" onClick="num('9')">9</button> 
+ <button class="boton_personalizado" value="8" onclick="num('8')">8</button> 
+ <button class="boton_personalizado" value="7" onclick="num('7')">7</button> 
+ <button class="boton_personalizado" value="/" onclick="operacion('/')">/</button> 
+</p>
+
+<p>
+ <button class="boton_personalizado" value="6" onclick="num('6')">6</button> 
+ <button class="boton_personalizado" value="5" onclick="num('5')">5</button> 
+ <button class="boton_personalizado" value="4" onclick="num('4')">4</button> 
+ <button class="boton_personalizado" value="*" onclick="operacion('*')">*</button> 
+</p>
+
+<p>
+ <button class="boton_personalizado" value="3" onclick="num('3')">3</button> 
+ <button class="boton_personalizado" value="2" onclick="num('2')">2</button> 
+ <button class="boton_personalizado" value="1" onclick="num('1')">1</button> 
+ <button class="boton_personalizado" value="-" onclick="operacion('-')">-</button> 
+</p>
+
+<p>
+ <button class="boton_personalizado" value="0" onclick="num('0')">0</button> 
+ <button class="boton_personalizado" onclick="num('.')">.</button> 
+ <button class="boton_personalizado" value="="onclick="total()">=</button> 
+ <button class="boton_personalizado" value="+" onclick="operacion('+')">+</button> 
+</p>
+     </div>
+
+<script>
+
+n="";
+a=0;
+b=0;
+cont=0;
+opp="";
+cont2=0;
+
+function num(xx){
+
+if(cont2==1){
+  textoPantalla.value="";
+  n="";
+  cont2=0;
+}
+
+if('.'==xx){
+
+  if(cont==0){
+
+       if (n==""){
+           n+="0.";
+        }
+        else {
+          n+=".";
+        }
+        cont=1;
+          }
+       }
+  else{
+
+    n+=xx;
+  }
+       
+    textoPantalla.value=n;
+}
+
+function operacion(op){
+  a=parseFloat(n);
+  textoPantalla.value="";
+opp=op;
+n="";
+cont=0;
+
+  }
+
+  function total(){
+  b=parseFloat(n);
+ if(opp=="+"){
+textoPantalla.value=(a+b).toString();
+ }
+ if(opp=="-"){
+textoPantalla.value=(a-b).toString();
+ }
+ if(opp=="*"){
+textoPantalla.value=(a*b).toString();
+ }
+ if(opp=="/"){
+textoPantalla.value=(a/b).toString();
+ }
+
+cont=0;
+ cont2=1;
+  }
+
+  function clear() {
+
+      textoPantalla.value=0;
+n="";
+a=0;
+b=0;
+cont=0;
+opp="";
+cont2=0;
+  }
+
+ </script>
+
+  </body>
+</html>
